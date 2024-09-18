@@ -1,12 +1,19 @@
 import "./index.css";
 
 export default function App() {
+  const [newItem, setNewItem] = useState("")
+  //setNewItem("")
   return (
-    <div>
+    <>
       <form className="new-item-form">
         <div className="form-row">
           <label htmlFor>New Item</label>
-          <input type="text" id="item" />
+          <input 
+            value={newItem}
+            onChange={e => setNewItem(e.target.value)}
+            type="text" 
+            id="item" 
+            />
         </div>
         <button className="btn">Add</button>
       </form>
@@ -27,6 +34,6 @@ export default function App() {
           <button className="btn btn-danger">Delete</button>
         </li>
       </ul>
-    </div>
+    </>
   )
 }

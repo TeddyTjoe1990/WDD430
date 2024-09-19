@@ -2,10 +2,25 @@ import "./index.css";
 
 export default function App() {
   const [newItem, setNewItem] = useState("")
+  const [todos, setTodos] = useState([])
   //setNewItem("")
+
+  function handleSubmit(e) {
+    e.preventDefault()
+
+    setTodos((CurrentTodos) => {
+      return [
+        ...todos,
+        {id: crypto.randomUUID(), title: newItem, completed: false},
+      ]
+    })
+  }
+
+  console.log(todos)
+
   return (
     <>
-      <form className="new-item-form">
+      <form handleSubmit={handleSubmit} className="new-item-form">
         <div className="form-row">
           <label htmlFor>New Item</label>
           <input 
